@@ -23,21 +23,9 @@ I made a web page that allows you to play the memory game. You have to find the 
 2. CSS3
 3. HTML5
 
-## Galery
-
-![MemoryGame-page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/Javascript/Imagenes/memorygame-0.jpg)
-
-![MemoryGame-page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/Javascript/Imagenes/memorygame-1.jpg)
-
-![MemoryGame-page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/Javascript/Imagenes/memorygame-2.jpg)
-
-![MemoryGame-page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/Javascript/Imagenes/memorygame-3.jpg)
-
-![MemoryGame-page](https://raw.githubusercontent.com/DiegoLibonati/DiegoLibonatiWeb/main/data/projects/Javascript/Imagenes/memorygame-4.jpg)
-
 ## Portfolio Link
 
-`https://diegolibonati.github.io/DiegoLibonatiWeb/#/projects?q=Memory%20Game%20Page`
+[`https://www.diegolibonati.com.ar/#/project/53`](https://www.diegolibonati.com.ar/#/project/53)
 
 ## Video
 
