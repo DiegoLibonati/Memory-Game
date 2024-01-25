@@ -33,11 +33,10 @@ body{
         width: 100%;
         height: 50%;
         text-align: center;
-        padding: 1rem;
     }
 
-    .item_container h2{
-        font-size: 3rem;
+    .item_container img {
+        width: 50%;
     }
 
     .item_container h3{
@@ -59,7 +58,7 @@ body{
 
     .item_container h3{
         letter-spacing: .2rem;
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .item_container img{
@@ -71,44 +70,44 @@ body{
 
 
 .section_container{
-width: 100%;
-height: 100vh;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
 }
 
-    .descripcion{
+    .description{
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 30rem;
+        height: auto;
         color: #fff;
     }
 
-        .descripcion h1{
+        .description h1{
             font-size: 4rem;
-            padding: 1rem;
             text-align: center;
         }
 
-        .descripcion p{
+        .description p{
             font-size: 2.5rem;
-            padding: 2rem;
+            text-align: center;
         }
 
-    .imagenes{
+    .images{
         width: 100%;
-        padding: 1rem;
     }
 
         .buttons{
             position: relative;
             background-image: url(https://cdn.pixabay.com/photo/2021/02/01/00/34/question-mark-5968971_640.png);
-            background-position:center;
+            background-position: center;
             background-repeat: no-repeat;
             background-size: 19rem 10rem;
             width: 25%;
             height: 25%;
+            cursor: pointer;
         }
 
             .buttons img{
@@ -118,37 +117,47 @@ height: 100vh;
                 height: 10rem;
             }
 
-    .tiempo{
-        width: 100%;
-        height: 8rem;
+    .timer {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: auto;
     }
 
-        .tiempo h2{
+        .timer h2 {
             font-size: 2rem;
             background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 1rem;
-            margin: 1rem;
             padding: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
             color: #fff;
             text-align: center;
         }
 
 
 @media screen and (min-width: 768px){
-    .descripcion{
+    .description{
         flex-flow: column wrap;
+        margin-top: 2rem;
     }
 
-    .imagenes_contenedor{
+    .description p{
+        margin-top: 2rem;
+    }
+
+    .images_container{
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: 3rem;
     }
 
-    .imagenes{
+    .images{
         width: 50%;
+    }
+
+    .timer {
+        margin-top: 2rem;
     }
 }

@@ -40,22 +40,36 @@ https://user-images.githubusercontent.com/99032604/199362752-8b5ac366-0a04-47f6-
 
 ## Documentation
 
-The `Card` class will be used to create a new card. It will be passed a constructor that will have as attributes the `id` and the `image` and also a method called `textInner()` that will serve as a clickable button element:
+The `Card` class will be used to create a new card. It will be passed a constructor that will have as attributes the `id` and the `image` and also a method called `createCard()` that will serve as a clickable button element:
 
 ```
 export class Card {
   constructor(public readonly id: string, public image: string) {}
 
-  textInner() {
-    return `<button class="buttons ${this.id}" data-id="${this.id}"><img src="${this.image}" class="imagen ${this.id}"></button>`;
+  createCard(): HTMLButtonElement {
+
+    const button = document.createElement("button") as HTMLButtonElement
+    const img = document.createElement("img") as HTMLImageElement
+
+    button.setAttribute("class", `buttons ${this.id}`)
+    button.setAttribute("data-id", this.id)
+
+    img.src = this.image
+    img.setAttribute("class", `image ${this.id}`)
+
+    button.append(img)
+
+    return button
   }
 }
 ```
 
-In this array called `imgsGame` we are going to store all the objects that we instantiate from the `Card` class:
+In this array called `cards` we are going to store all the objects that we instantiate from the `Card` class:
 
 ```
-const imgsGame = [
+import { Card } from "../Card";
+
+export const cards: Card[] = [
   new Card(
     "imgPizza",
     "https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs/masa-para-pizza-3-1-os3aa3ck56334eoe88d8hkem59xt1jziomikxlzx34.jpg"
@@ -97,19 +111,20 @@ export const sortArray = (array: Card[]): Card[] => {
 };
 ```
 
-We will create two arrays because we want to generate two pairs, then we will push equal parts of the cards to each array from the `imgsGame` array and finally we will randomly order both arrays with `orderImg()`:
+We will create two arrays because we want to generate two pairs, then we will push equal parts of the cards to each array from the `cards` array and finally we will randomly order both arrays with `createCards()`:
 
 ```
-const innerCards = (array: Card[]): void => {
+const createCards = (array: Card[]): void => {
+
   const newArray = array.concat(array);
   const sortedArray = sortArray(newArray);
 
   sortedArray.forEach((card) => {
-    imgsContainer.innerHTML += card.textInner();
+    imgsContainer.append(card.createCard());
   });
 
   return;
 };
 
-innerCards(imgsGame);
+createCards(cards);
 ```

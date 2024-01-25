@@ -1,70 +1,45 @@
 import { Card } from "./Card";
+import { cards } from "./constants/cards";
 import { imageReveal } from "./helpers/imageReveal";
 import { sortArray } from "./helpers/sortArray";
 import { startCount } from "./helpers/startCount";
 
-const imgsContainer = document.querySelector(".imagenes") as HTMLElement;
+const imgsContainer = document.querySelector(".images") as HTMLElement;
+const timer = document.querySelector(".timer h2") as HTMLHeadingElement;
 
-const imgsGame = [
-  new Card(
-    "imgPizza",
-    "https://saboryestilo.com.mx/wp-content/uploads/elementor/thumbs/masa-para-pizza-3-1-os3aa3ck56334eoe88d8hkem59xt1jziomikxlzx34.jpg"
-  ),
-  new Card(
-    "imgPaella",
-    "https://www.hola.com/imagenes/cocina/recetas/20200917175530/paella-valenciana-clasica/0-866-670/paella-age-m.jpg"
-  ),
-  new Card(
-    "imgBife",
-    "https://cdn2.cocinadelirante.com/sites/default/files/images/2019/04/como-sauvizar-carnes.jpg"
-  ),
-  new Card(
-    "imgManzana",
-    "https://www.cuerpomente.com/medio/2020/11/10/manzana_a1c5bdb0_1200x1200.jpg"
-  ),
-  new Card(
-    "imgPera",
-    "https://perfumesyfragancias.online/wp-content/uploads/2018/10/poire.jpg"
-  ),
-  new Card("imgCoco", "https://i.blogs.es/f63b6d/coco/450_1000.jpg"),
-];
+const createCards = (array: Card[]): void => {
 
-const innerCards = (array: Card[]): void => {
   const newArray = array.concat(array);
   const sortedArray = sortArray(newArray);
 
   sortedArray.forEach((card) => {
-    imgsContainer.innerHTML += card.textInner();
+    imgsContainer.append(card.createCard());
   });
 
   return;
 };
 
-innerCards(imgsGame);
+createCards(cards);
 
 const btns = document.querySelectorAll(".buttons") as NodeList;
-const timer = document.querySelector(".tiempo h2") as HTMLHeadingElement;
 
-let readyGo: Date;
+let timerStart: Date;
+let cardsGuessed: string[] = [];
 let cardSelected: string = "";
-let value: string;
-let endGame: string[] = [];
-
-imgsContainer.addEventListener("click", startCount, true);
-imgsContainer.removeEventListener("click", startCount, true);
+let idCard: string;
 
 btns.forEach(function (btn) {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    if (!readyGo) readyGo = startCount();
+    if (!timerStart) timerStart = startCount();
 
     const target = e.currentTarget as HTMLElement;
 
-    if (target.dataset.id) value = target.dataset.id;
+    if (target.dataset.id) idCard = target.dataset.id;
 
     const img = target.children[0] as HTMLImageElement;
-    
+
     if (Boolean(parseInt(img.style.opacity))) return;
 
     imageReveal(img, 1);
@@ -74,22 +49,21 @@ btns.forEach(function (btn) {
 });
 
 const gameFunction = () => {
-  if (cardSelected === value) {
-    document.querySelectorAll(`.${value}`).forEach(function (img) {
+
+  if (cardSelected === idCard) {
+    document.querySelectorAll(`.${idCard}`).forEach(function (img) {
       const button = img as HTMLButtonElement;
 
       button.disabled = true;
       button.classList.remove("imagen");
-      button.classList.remove(`${value}`);
+      button.classList.remove(`${idCard}`);
     });
 
-    let contador = "+";
+    cardsGuessed.push(cardSelected);
 
-    endGame.push(contador);
-
-    if (endGame.length == imgsGame.length) {
+    if (cardsGuessed.length == cards.length) {
       const end = new Date();
-      const finalTime = end.getTime() - readyGo.getTime();
+      const finalTime = end.getTime() - timerStart.getTime();
       const inSec = Math.floor(finalTime / 1000);
       timer!.innerHTML = `Finish the game in ${inSec} seconds. Congrats.`;
       return;
@@ -101,11 +75,11 @@ const gameFunction = () => {
 
   if (cardSelected) {
     const cardSelectedElement = document.querySelector(
-      `.imagen.${cardSelected}[style="opacity: 1;"]`
+      `.image.${cardSelected}[style="opacity: 1;"]`
     ) as HTMLImageElement;
 
     const cardValueElement = document.querySelector(
-      `.imagen.${value}[style="opacity: 1;"]`
+      `.image.${idCard}[style="opacity: 1;"]`
     ) as HTMLImageElement;
 
     setTimeout(function () {
@@ -117,6 +91,6 @@ const gameFunction = () => {
     return;
   }
 
-  cardSelected = value;
+  cardSelected = idCard;
   return;
 };
