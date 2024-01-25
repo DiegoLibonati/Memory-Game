@@ -36,7 +36,7 @@ I made a web page that allows you to play the memory game. You have to find the 
 
 ## Video
 
-https://user-images.githubusercontent.com/99032604/199362752-8b5ac366-0a04-47f6-8f8c-0e49d06621bc.mp4
+https://github.com/DiegoLibonati/Memory-Game-Page/assets/99032604/1a61ef4a-38b7-4646-8b28-09c7a454b837
 
 ## Documentation
 
