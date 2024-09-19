@@ -1,4 +1,4 @@
-# Memory-Game-Page
+# Memory Game
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ I made a web page that allows you to play the memory game. You have to find the 
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/53`](https://www.diegolibonati.com.ar/#/project/53)
+[`https://www.diegolibonati.com.ar/#/project/Memory-Game`](https://www.diegolibonati.com.ar/#/project/Memory-Game)
 
 ## Video
 
