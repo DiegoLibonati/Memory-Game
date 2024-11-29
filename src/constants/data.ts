@@ -1,4 +1,4 @@
-import { Card } from "../Card";
+import { Card } from "../models/Card";
 
 export const cards: Card[] = [
   new Card(
