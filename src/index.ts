@@ -1,15 +1,17 @@
 import { Card } from "./models/Card";
 
 import { sortArray } from "./helpers/sortArray";
-import { imgsContainer, timer } from "./constants/elements";
+import { getElements } from "./helpers/getElements";
 import { cards } from "./constants/data";
 
-let timerStart: Date;
+let timerStart: Date | null = null;
 let cardsGuessed: string[] = [];
 let cardSelected: string = "";
-let idCard: string;
+let idCard: string = "";
 
 const createCards = (array: Card[]): void => {
+  const { imgsContainer } = getElements();
+
   const newArray = array.concat(array);
   const sortedArray = sortArray<Card>(newArray);
 
@@ -37,6 +39,8 @@ const handleClickImageButton = (e: Event) => {
 };
 
 const game = () => {
+  const { timer } = getElements();
+
   if (!cardSelected) {
     cardSelected = idCard;
     return;
@@ -72,7 +76,7 @@ const game = () => {
 
   if (cardsGuessed.length == cards.length) {
     const end = new Date();
-    const finalTime = end.getTime() - timerStart.getTime();
+    const finalTime = end.getTime() - timerStart!.getTime();
     const inSec = Math.floor(finalTime / 1000);
     timer!.innerHTML = `Finish the game in ${inSec} seconds. Congrats.`;
     return;
@@ -83,6 +87,11 @@ const game = () => {
 };
 
 const onInit = () => {
+  timerStart = null;
+  cardsGuessed = [];
+  cardSelected = "";
+  idCard = "";
+
   createCards(cards);
 
   const btns = document.querySelectorAll(".buttons") as NodeList;

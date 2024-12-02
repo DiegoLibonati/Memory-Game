@@ -1,27 +1,23 @@
 import { screen, within } from "@testing-library/dom";
 import user from "@testing-library/user-event";
 
-import fs from "fs";
-import path from "path";
-
 import { CARDS_MOCK } from "./tests/constants/constants";
-
-const INITIAL_HTML: string = fs.readFileSync(
-  path.resolve(__dirname, "../index.html"),
-  "utf8"
-);
+import { OFFICIAL_BODY } from "./tests/jest.setup";
 
 beforeEach(() => {
-  jest.resetModules();
+  jest.useFakeTimers();
   jest.resetAllMocks();
-  const body = INITIAL_HTML.match(/<body[^>]*>([\s\S]*?)<\/body>/i)![1];
 
-  document.body.innerHTML = body;
+  document.body.innerHTML = OFFICIAL_BODY;
+
   require("./index.ts");
   document.dispatchEvent(new Event("DOMContentLoaded"));
 });
 
 afterEach(() => {
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+
   document.body.innerHTML = "";
 });
 
@@ -69,8 +65,6 @@ describe("If the selected cards do not match.", () => {
   });
 
   test("It must hide the selected cards again.", async () => {
-    jest.useFakeTimers();
-
     const cardModelOne = CARDS_MOCK[0];
     const cardModelTwo = CARDS_MOCK[1];
 
@@ -112,12 +106,14 @@ describe("If the selected cards do not match.", () => {
 
     expect(imgOne.style.opacity).toBe("0");
     expect(imgTwo.style.opacity).toBe("0");
-
-    jest.useRealTimers();
   });
 });
 
 describe("If the selected cards match.", () => {
+  const userEvent = user.setup({
+    advanceTimers: jest.advanceTimersByTime,
+  });
+
   test("It must permanently reveal the selected cards.", async () => {
     const cardModelOne = CARDS_MOCK[0];
 
@@ -128,7 +124,7 @@ describe("If the selected cards match.", () => {
     for (let card of cardsOne) {
       expect(card).toBeInTheDocument();
 
-      await user.click(card);
+      await userEvent.click(card);
     }
 
     for (let card of cardsOne) {
@@ -140,6 +136,10 @@ describe("If the selected cards match.", () => {
 });
 
 describe("If the game ends", () => {
+  const userEvent = user.setup({
+    advanceTimers: jest.advanceTimersByTime,
+  });
+
   test("It should show the end timer.", async () => {
     for (let card of CARDS_MOCK) {
       const cardButtons = screen.getAllByRole("button", {
@@ -149,7 +149,7 @@ describe("If the game ends", () => {
       for (let cardBtn of cardButtons) {
         expect(cardBtn).toBeInTheDocument();
 
-        await user.click(cardBtn);
+        await userEvent.click(cardBtn);
       }
     }
 
