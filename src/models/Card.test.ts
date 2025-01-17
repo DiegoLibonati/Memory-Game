@@ -15,9 +15,9 @@ describe("Card Class", () => {
 
   test("It must create the card, this card must be a clickable button.", () => {
     const btnCard = card.createCard();
-    const imgCard = btnCard.querySelector(`.image.${card.id}`);
+    const imgCard = btnCard.querySelector(`.btn__img.${card.id}`);
 
-    expect(btnCard).toHaveAttribute("class", `buttons ${card.id}`);
+    expect(btnCard).toHaveAttribute("class", `btn ${card.id}`);
     expect(btnCard).toHaveAttribute("aria-label", `button ${card.id}`);
     expect(btnCard).toHaveAttribute("data-id", card.id);
     expect(btnCard.children).toHaveLength(1);

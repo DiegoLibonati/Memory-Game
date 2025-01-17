@@ -81,7 +81,7 @@
   width: 100%;
 }
 
-.buttons {
+.btn {
   position: relative;
   background-image: url(https://cdn.pixabay.com/photo/2021/02/01/00/34/question-mark-5968971_640.png);
   background-position: center;
@@ -92,7 +92,7 @@
   cursor: pointer;
 }
 
-.buttons img {
+.btn img {
   object-fit: cover;
   opacity: 0;
   width: 19rem;
