@@ -20,6 +20,6 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "npx jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose"
   }
 }

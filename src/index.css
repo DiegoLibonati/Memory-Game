@@ -1,0 +1,32 @@
+:root {
+  --primary-font: "Titillium Web", sans-serif;
+  --base-font-size: 10px;
+  --primary-color: #eeaeca;
+  --secondary-color: #94bbe9;
+  --white-color: #ffffff;
+  --black-color: #000000;
+  --primary-int-color: 238, 174, 202;
+  --black-color: 0, 0, 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: var(--base-font-size);
+  font-family: var(--primary-font);
+  box-sizing: border-box;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  background: var(--primary-color);
+  background: radial-gradient(
+    circle,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+}
