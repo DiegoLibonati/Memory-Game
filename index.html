@@ -17,32 +17,38 @@
     />
   </head>
   <body>
-    <header class="header">
-      <div class="header__title">
-        <h3>Memory Game</h3>
+    <header class="header-wrapper">
+      <div class="header-wrapper__title">
+        <h3 class="header-wrapper__title-text">Memory Game</h3>
       </div>
 
-      <div class="header__logo">
-        <img src="./src/assets/DL.png" alt="diego libonati" />
+      <div class="header-wrapper__logo">
+        <img
+          src="./src/assets/DL.png"
+          alt="diego libonati"
+          class="header-wrapper__logo-img"
+        />
       </div>
     </header>
 
-    <main>
+    <main class="main-game">
       <section class="game">
         <div class="game__description">
-          <h1>Welcome to Memory GAME!</h1>
-          <p>
+          <h1 class="game__description-title">Welcome to Memory GAME!</h1>
+          <p class="game__description-explication">
             You mission is find the img match, and try to beat your best record
             in seconds.
           </p>
         </div>
 
-        <div class="images">
-          <div class="images__wrapper"></div>
+        <div class="game__wrapper">
+          <div class="game__wrapper-cards"></div>
         </div>
 
-        <div class="timer">
-          <h2>Your time to finish was: Try to play before</h2>
+        <div class="game__timer">
+          <h2 class="game__timer-text">
+            Your time to finish was: Try to play before
+          </h2>
         </div>
       </section>
     </main>

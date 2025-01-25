@@ -29,7 +29,7 @@ describe("index.ts", () => {
     });
 
     test("It must render the header with the title and the image of the page.", () => {
-      const header = document.querySelector(".header") as HTMLElement;
+      const header = document.querySelector(".header-wrapper") as HTMLElement;
       const heading = within(header).getByRole("heading", {
         name: /memory game/i,
       });
@@ -62,7 +62,7 @@ describe("index.ts", () => {
     });
 
     test("It must render all the cards with their pairs to start playing.", () => {
-      const imagesContainer = document.querySelector(".images__wrapper");
+      const imagesContainer = document.querySelector(".game__wrapper-cards");
 
       expect(imagesContainer).toBeInTheDocument();
       expect(imagesContainer?.children).toHaveLength(mockCards.length * 2);

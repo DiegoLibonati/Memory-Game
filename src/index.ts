@@ -48,11 +48,11 @@ const game = () => {
 
   if (cardSelected !== idCard) {
     const cardSelectedElement = document.querySelector(
-      `.btn__img.${cardSelected}[style="opacity: 1;"]`
+      `.card__img.${cardSelected}[style="opacity: 1;"]`
     ) as HTMLImageElement;
 
     const cardValueElement = document.querySelector(
-      `.btn__img.${idCard}[style="opacity: 1;"]`
+      `.card__img.${idCard}[style="opacity: 1;"]`
     ) as HTMLImageElement;
 
     setTimeout(function () {
@@ -93,7 +93,7 @@ const onInit = () => {
 
   createCards(cards);
 
-  const btns = document.querySelectorAll(".btn") as NodeList;
+  const btns = document.querySelectorAll(".card") as NodeList;
 
   btns.forEach((btn) =>
     btn.addEventListener("click", (e) => handleClickImageButton(e))

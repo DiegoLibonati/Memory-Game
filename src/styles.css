@@ -1,4 +1,4 @@
-.header {
+.header-wrapper {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -8,8 +8,8 @@
   border-bottom: 0.1rem solid var(--black-color);
 }
 
-.header__title,
-.header__logo {
+.header-wrapper__title,
+.header-wrapper__logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,33 +18,33 @@
   text-align: center;
 }
 
-.header__logo img {
-  width: 50%;
-}
-
-.header__title h3 {
+.header-wrapper__title-text {
   font-size: 3.5rem;
   color: var(--white-color);
 }
 
+.header-wrapper__logo-img {
+  width: 50%;
+}
+
 @media screen and (min-width: 768px) {
-  .header {
+  .header-wrapper {
     flex-flow: row wrap;
     height: 10rem;
   }
 
-  .header__title,
-  .header__logo {
+  .header-wrapper__title,
+  .header-wrapper__logo {
     height: 100%;
     width: 50%;
   }
 
-  .header__title h3 {
+  .header-wrapper__title-text {
     letter-spacing: 0.2rem;
     font-size: 4rem;
   }
 
-  .header__logo img {
+  .header-wrapper__logo-img {
     height: 10rem;
     width: 10rem;
     object-fit: cover;
@@ -67,21 +67,39 @@
   color: var(--white-color);
 }
 
-.game__description h1 {
+.game__description-title {
   font-size: 4rem;
   text-align: center;
 }
 
-.game__description p {
+.game__description-explication {
   font-size: 2.5rem;
   text-align: center;
 }
 
-.images__wrapper {
+.game__wrapper-cards {
   width: 100%;
 }
 
-.btn {
+.game__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.game__timer-text {
+  font-size: 2rem;
+  background-color: rgba(var(--black-color), 0.3);
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--white-color);
+  text-align: center;
+}
+
+.card {
   position: relative;
   background-image: url(https://cdn.pixabay.com/photo/2021/02/01/00/34/question-mark-5968971_640.png);
   background-position: center;
@@ -92,29 +110,11 @@
   cursor: pointer;
 }
 
-.btn img {
+.card__img {
   object-fit: cover;
   opacity: 0;
   width: 19rem;
   height: 10rem;
-}
-
-.timer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-}
-
-.timer h2 {
-  font-size: 2rem;
-  background-color: rgba(var(--black-color), 0.3);
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  color: var(--white-color);
-  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -123,22 +123,22 @@
     margin-top: 2rem;
   }
 
-  .game__description p {
+  .game__description-explication {
     margin-top: 2rem;
   }
 
-  .images {
+  .game__wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
   }
 
-  .images__wrapper {
+  .game__wrapper-cards {
     width: 50%;
   }
 
-  .timer {
+  .game__timer {
     margin-top: 2rem;
   }
 }
