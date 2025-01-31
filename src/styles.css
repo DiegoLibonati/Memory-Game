@@ -8,8 +8,8 @@
   border-bottom: 0.1rem solid var(--black-color);
 }
 
-.header-wrapper__title,
-.header-wrapper__logo {
+.header-wrapper__content,
+.header-wrapper__illustration {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,12 +18,12 @@
   text-align: center;
 }
 
-.header-wrapper__title-text {
+.header-wrapper__title {
   font-size: 3.5rem;
   color: var(--white-color);
 }
 
-.header-wrapper__logo-img {
+.header-wrapper__logo {
   width: 50%;
 }
 
@@ -33,18 +33,18 @@
     height: 10rem;
   }
 
-  .header-wrapper__title,
-  .header-wrapper__logo {
+  .header-wrapper__content,
+  .header-wrapper__illustration {
     height: 100%;
     width: 50%;
   }
 
-  .header-wrapper__title-text {
+  .header-wrapper__title {
     letter-spacing: 0.2rem;
     font-size: 4rem;
   }
 
-  .header-wrapper__logo-img {
+  .header-wrapper__logo {
     height: 10rem;
     width: 10rem;
     object-fit: cover;
@@ -57,7 +57,7 @@
   padding: 1rem;
 }
 
-.game__description {
+.game__explication {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,17 +67,17 @@
   color: var(--white-color);
 }
 
-.game__description-title {
+.game__explication-title {
   font-size: 4rem;
   text-align: center;
 }
 
-.game__description-explication {
+.game__description {
   font-size: 2.5rem;
   text-align: center;
 }
 
-.game__wrapper-cards {
+.game__cards {
   width: 100%;
 }
 
@@ -89,7 +89,7 @@
   height: auto;
 }
 
-.game__timer-text {
+.game__result-text {
   font-size: 2rem;
   background-color: rgba(var(--black-color), 0.3);
   padding: 1rem;
@@ -118,23 +118,23 @@
 }
 
 @media screen and (min-width: 768px) {
-  .game__description {
+  .game__explication {
     flex-flow: column wrap;
     margin-top: 2rem;
   }
 
-  .game__description-explication {
+  .game__description {
     margin-top: 2rem;
   }
 
-  .game__wrapper {
+  .game__wrapper-cards {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
   }
 
-  .game__wrapper-cards {
+  .game__cards {
     width: 50%;
   }
 

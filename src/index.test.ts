@@ -62,7 +62,7 @@ describe("index.ts", () => {
     });
 
     test("It must render all the cards with their pairs to start playing.", () => {
-      const imagesContainer = document.querySelector(".game__wrapper-cards");
+      const imagesContainer = document.querySelector(".game__cards");
 
       expect(imagesContainer).toBeInTheDocument();
       expect(imagesContainer?.children).toHaveLength(mockCards.length * 2);
