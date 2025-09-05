@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import { Card } from "../models/Card";
+import { Card } from "../src/models/Card";
 
 export const mockCards: Card[] = [
   new Card(
@@ -15,7 +15,7 @@ export const mockCards: Card[] = [
 ];
 
 const INITIAL_HTML: string = fs.readFileSync(
-  path.resolve(__dirname, "../../index.html"),
+  path.resolve(__dirname, "../index.html"),
   "utf8"
 );
 
