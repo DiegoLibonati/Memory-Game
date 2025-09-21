@@ -1,4 +1,4 @@
-import { Card } from "./Card";
+import { Card } from "@src/models/Card";
 
 const CARD = {
   id: "pepe",

@@ -1,6 +1,6 @@
-import { getElements } from "./getElements";
+import { getElements } from "@src/helpers/getElements";
 
-import { OFFICIAL_BODY } from "../../tests/jest.constants";
+import { OFFICIAL_BODY } from "@tests/jest.constants";
 
 describe("getElements.ts", () => {
   describe("General Tests.", () => {

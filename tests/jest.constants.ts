@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import { Card } from "../src/models/Card";
+import { Card } from "@src/models/Card";
 
 export const mockCards: Card[] = [
   new Card(

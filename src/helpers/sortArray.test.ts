@@ -1,4 +1,4 @@
-import { sortArray } from "./sortArray";
+import { sortArray } from "@src/helpers/sortArray";
 
 describe("sortArray.ts", () => {
   describe("General Tests.", () => {

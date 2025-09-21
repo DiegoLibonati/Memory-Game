@@ -1,8 +1,8 @@
-import { Card } from "./models/Card";
+import { Card } from "@src/models/Card";
 
-import { sortArray } from "./helpers/sortArray";
-import { getElements } from "./helpers/getElements";
-import { cards } from "./constants/data";
+import { sortArray } from "@src/helpers/sortArray";
+import { getElements } from "@src/helpers/getElements";
+import { cards } from "@src/constants/data";
 
 let timerStart: Date | null = null;
 let cardsGuessed: string[] = [];

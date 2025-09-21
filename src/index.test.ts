@@ -1,9 +1,9 @@
 import { screen, within } from "@testing-library/dom";
 import user from "@testing-library/user-event";
 
-import { mockCards, OFFICIAL_BODY } from "../tests/jest.constants";
+import { mockCards, OFFICIAL_BODY } from "@tests/jest.constants";
 
-jest.mock("./constants/data.ts", () => ({
+jest.mock("@src/constants/data.ts", () => ({
   get cards() {
     return mockCards;
   },
