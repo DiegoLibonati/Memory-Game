@@ -22,6 +22,7 @@ I made a web page that allows you to play the memory game. You have to find the 
 1. Typescript
 2. CSS3
 3. HTML5
+4. Vite
 
 ## Libraries used
 
