@@ -36,7 +36,7 @@
     <!-- <link rel="manifest" href="/manifest.json" /> -->
 
     <link rel="stylesheet" type="text/css" href="./src/index.css" />
-    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./src/styles/css/header.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,42 +45,21 @@
     />
   </head>
   <body>
-    <header class="header-wrapper">
-      <div class="header-wrapper__content">
-        <h3 class="header-wrapper__title">Memory Game</h3>
+    <header class="header">
+      <div class="header__content">
+        <h3 class="header__title">Memory Game</h3>
       </div>
 
-      <div class="header-wrapper__illustration">
+      <div class="header__illustration">
         <img
-          src="./src/assets/DL.png"
+          src="./src/assets/pngs/DL.png"
           alt="diego libonati"
-          class="header-wrapper__logo"
+          class="header__logo"
         />
       </div>
     </header>
 
-    <main class="main-game">
-      <section class="game">
-        <div class="game__explication">
-          <h1 class="game__explication-title">Welcome to Memory GAME!</h1>
-          <p class="game__description">
-            You mission is find the img match, and try to beat your best record
-            in seconds.
-          </p>
-        </div>
-
-        <div class="game__wrapper-cards">
-          <div class="game__cards"></div>
-        </div>
-
-        <div class="game__timer">
-          <h2 class="game__result-text">
-            Your time to finish was: Try to play before
-          </h2>
-        </div>
-      </section>
-    </main>
-
-    <script type="module" src="./src/index.ts"></script>
+    <div id="app"></div>
+    <script type="module" src="/src/index.ts"></script>
   </body>
 </html>
