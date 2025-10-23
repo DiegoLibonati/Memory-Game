@@ -39,29 +39,31 @@ const game = () => {
   }
 
   if (cardSelected !== idCard) {
-    const cardSelectedElement = document.querySelector(
+    const cardSelectedElement = document.querySelector<HTMLImageElement>(
       `.card__img.${cardSelected}[style="opacity: 1;"]`
-    ) as HTMLImageElement;
+    );
 
-    const cardValueElement = document.querySelector(
+    const cardValueElement = document.querySelector<HTMLImageElement>(
       `.card__img.${idCard}[style="opacity: 1;"]`
-    ) as HTMLImageElement;
+    );
 
     setTimeout(function () {
-      cardSelectedElement.style.opacity = "0";
-      cardValueElement.style.opacity = "0";
+      cardSelectedElement!.style.opacity = "0";
+      cardValueElement!.style.opacity = "0";
     }, 250);
 
     cardSelected = "";
     return;
   }
 
-  document.querySelectorAll(`.${idCard}`).forEach(function (img) {
-    const button = img as HTMLButtonElement;
+  document
+    .querySelectorAll<HTMLButtonElement>(`.${idCard}`)
+    .forEach(function (btn) {
+      const button = btn as HTMLButtonElement;
 
-    button.disabled = true;
-    button.classList.remove(`${idCard}`);
-  });
+      button.disabled = true;
+      button.classList.remove(`${idCard}`);
+    });
 
   cardsGuessed.push(cardSelected);
 

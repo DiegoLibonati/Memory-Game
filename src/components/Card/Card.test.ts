@@ -67,9 +67,9 @@ describe("Card.ts", () => {
 
       renderComponent(props);
 
-      const img = document.querySelector(".card__img") as HTMLImageElement;
+      const img = document.querySelector<HTMLImageElement>(".card__img");
       expect(img).toBeInTheDocument();
-      expect(img.tagName).toBe("IMG");
+      expect(img!.tagName).toBe("IMG");
     });
   });
 
@@ -97,7 +97,7 @@ describe("Card.ts", () => {
 
       renderComponent(props);
 
-      const img = document.querySelector(".card__img") as HTMLImageElement;
+      const img = document.querySelector<HTMLImageElement>(".card__img");
 
       expect(img).toHaveAttribute("src", "path/to/img.jpg");
       expect(img).toHaveAttribute("alt", "Example Image");
@@ -201,7 +201,7 @@ describe("Card.ts", () => {
       };
 
       const { container } = renderComponent(props);
-      const img = container.querySelector(".card__img");
+      const img = container.querySelector<HTMLImageElement>(".card__img");
 
       expect(img).toBeInTheDocument();
     });

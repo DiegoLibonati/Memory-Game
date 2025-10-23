@@ -56,7 +56,7 @@ describe("MemoryPage.ts", () => {
     test("It should render the main game section", () => {
       renderComponent();
 
-      const gameSection = document.querySelector(".game");
+      const gameSection = document.querySelector<HTMLElement>(".game");
       expect(gameSection).toBeInTheDocument();
       expect(gameSection?.tagName).toBe("SECTION");
     });
@@ -94,21 +94,21 @@ describe("MemoryPage.ts", () => {
     test("It should render all cards returned by sortedArray", () => {
       renderComponent();
 
-      const cardButtons = document.querySelectorAll(".card");
+      const cardButtons = document.querySelectorAll<HTMLButtonElement>(".card");
       expect(cardButtons.length).toBe(cards.length * 2);
     });
 
     test("Each card should contain an img element", () => {
       renderComponent();
 
-      const imgs = document.querySelectorAll(".card__img");
+      const imgs = document.querySelectorAll<HTMLImageElement>(".card__img");
       expect(imgs.length).toBe(cards.length * 2);
     });
 
     test("Each card should have proper src and alt attributes", () => {
       renderComponent();
 
-      const imgs = document.querySelectorAll(".card__img");
+      const imgs = document.querySelectorAll<HTMLImageElement>(".card__img");
 
       imgs.forEach((img) => {
         expect(img).toHaveAttribute("src");
@@ -119,7 +119,8 @@ describe("MemoryPage.ts", () => {
     test("Each card button should have aria-label and correct class", () => {
       renderComponent();
 
-      const buttons = document.querySelectorAll("button.card");
+      const buttons =
+        document.querySelectorAll<HTMLButtonElement>("button.card");
       buttons.forEach((btn) => {
         expect(btn).toHaveAttribute("aria-label");
         expect(btn.classList.contains("card")).toBe(true);
@@ -131,10 +132,10 @@ describe("MemoryPage.ts", () => {
     test("It should set img opacity to 1 when card clicked", async () => {
       renderComponent();
 
-      const firstCard = document.querySelector(".card") as HTMLButtonElement;
-      const img = firstCard.querySelector("img") as HTMLImageElement;
+      const firstCard = document.querySelector<HTMLButtonElement>(".card");
+      const img = firstCard!.querySelector<HTMLImageElement>("img");
 
-      expect(img.style.opacity).toBe("0");
+      expect(img!.style.opacity).toBe("0");
 
       const onClick = (Card as jest.Mock).mock.calls[0][0].onClick;
       const event = new MouseEvent("click", { bubbles: true });
@@ -142,17 +143,19 @@ describe("MemoryPage.ts", () => {
 
       onClick(event, "A");
 
-      expect(img.style.opacity).toBe("1");
+      expect(img!.style.opacity).toBe("1");
     });
 
     test("It should prevent flipping a card already visible", async () => {
       renderComponent();
 
-      const firstCard = document.querySelector(".card") as HTMLButtonElement;
-      const img = firstCard.querySelector("img") as HTMLImageElement;
+      const firstCard = document.querySelector<HTMLButtonElement>(".card");
+      const img = firstCard!.querySelector<HTMLImageElement>(
+        "img"
+      ) as HTMLImageElement;
 
       img.style.opacity = "1";
-      await user.click(firstCard);
+      await user.click(firstCard!);
 
       expect(img.style.opacity).toBe("1");
     });
@@ -162,8 +165,11 @@ describe("MemoryPage.ts", () => {
     test("It should render .game__cards inside wrapper", () => {
       renderComponent();
 
-      const wrapper = document.querySelector(".game__wrapper-cards");
-      const cardsContainer = wrapper?.querySelector(".game__cards");
+      const wrapper = document.querySelector<HTMLDivElement>(
+        ".game__wrapper-cards"
+      );
+      const cardsContainer =
+        wrapper?.querySelector<HTMLDivElement>(".game__cards");
 
       expect(wrapper).toBeInTheDocument();
       expect(cardsContainer).toBeInTheDocument();
@@ -172,8 +178,10 @@ describe("MemoryPage.ts", () => {
     test("It should render .game__result-text inside .game__timer", () => {
       renderComponent();
 
-      const timerSection = document.querySelector(".game__timer");
-      const resultText = timerSection?.querySelector(".game__result-text");
+      const timerSection =
+        document.querySelector<HTMLDivElement>(".game__timer");
+      const resultText =
+        timerSection?.querySelector<HTMLHeadingElement>(".game__result-text");
 
       expect(timerSection).toBeInTheDocument();
       expect(resultText).toBeInTheDocument();
@@ -190,9 +198,10 @@ describe("MemoryPage.ts", () => {
     test("Each generated card should append to .game__cards container", () => {
       renderComponent();
 
-      const cardsContainer = document.querySelector(".game__cards");
+      const cardsContainer =
+        document.querySelector<HTMLDivElement>(".game__cards");
       const children = cardsContainer?.children;
-      expect(children?.length).toBe((cards as any).length * 2);
+      expect(children?.length).toBe(cards.length * 2);
     });
   });
 });
