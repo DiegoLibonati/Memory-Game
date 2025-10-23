@@ -10,16 +10,13 @@ type RenderComponent = {
   props: { onClick: jest.Mock } & CardProps;
 };
 
-const renderComponent = (props: CardProps): RenderComponent => {
-  const cardProps = {
-    ...props,
-    onClick: jest.fn(),
-  };
-
-  const container = Card(cardProps);
+const renderComponent = (
+  props: { onClick: jest.Mock } & CardProps
+): RenderComponent => {
+  const container = Card(props);
   document.body.appendChild(container);
 
-  return { container: container, props: cardProps };
+  return { container: container, props: props };
 };
 
 describe("Card.ts", () => {
@@ -32,7 +29,7 @@ describe("Card.ts", () => {
 
   describe("General Tests.", () => {
     test("It should render the component as a button", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-1",
         name: "Example Card",
         imgSrc: "example.png",
@@ -47,7 +44,7 @@ describe("Card.ts", () => {
     });
 
     test("It should set aria-label and data-id correctly", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-1",
         name: "Example Card",
         imgSrc: "example.png",
@@ -61,7 +58,7 @@ describe("Card.ts", () => {
     });
 
     test("It should render an img element inside the button", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-1",
         name: "Example Card",
         imgSrc: "example.png",
@@ -78,7 +75,7 @@ describe("Card.ts", () => {
 
   describe("Props Rendering Tests.", () => {
     test("It should apply correct id class to button", () => {
-      const props: CardProps = {
+      const props = {
         id: "unique-card",
         name: "Card Name",
         imgSrc: "image.png",
@@ -91,7 +88,7 @@ describe("Card.ts", () => {
     });
 
     test("It should set correct img src and alt attributes", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-2",
         name: "Example Image",
         imgSrc: "path/to/img.jpg",
@@ -109,7 +106,7 @@ describe("Card.ts", () => {
 
   describe("Click Event Tests.", () => {
     test("It should call onClick when button is clicked", async () => {
-      const props: CardProps = {
+      const props = {
         id: "card-3",
         name: "Clickable Card",
         imgSrc: "click.png",
@@ -125,7 +122,7 @@ describe("Card.ts", () => {
     });
 
     test("It should pass event and id parameters to onClick", async () => {
-      const props: CardProps = {
+      const props = {
         id: "card-5",
         name: "Card Name",
         imgSrc: "img.png",
@@ -144,7 +141,7 @@ describe("Card.ts", () => {
     });
 
     test("It should call onClick multiple times on multiple clicks", async () => {
-      const props: CardProps = {
+      const props = {
         id: "card-6",
         name: "Repeated Click",
         imgSrc: "multi.png",
@@ -164,7 +161,7 @@ describe("Card.ts", () => {
 
   describe("Accessibility Tests.", () => {
     test("It should be accessible via keyboard focus", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-focus",
         name: "Focusable Card",
         imgSrc: "focus.png",
@@ -180,7 +177,7 @@ describe("Card.ts", () => {
     });
 
     test("It should have proper aria-label for accessibility", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-aria",
         name: "Accessible Card",
         imgSrc: "aria.png",
@@ -196,7 +193,7 @@ describe("Card.ts", () => {
 
   describe("DOM Structure Tests.", () => {
     test("It should nest img inside button", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-7",
         name: "Nested Image",
         imgSrc: "nested.png",
@@ -210,7 +207,7 @@ describe("Card.ts", () => {
     });
 
     test("It should have correct class names", () => {
-      const props: CardProps = {
+      const props = {
         id: "card-8",
         name: "Styled Card",
         imgSrc: "styled.png",
