@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
+:root {
+  /* Colors */
+  --color-primary: #eeaeca;
+  --color-secondary: #94bbe9;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-primary-int: 238, 174, 202;
+  --color-black-int: 0, 0, 0;
+
+  /* Typography */
+  --font-family-primary: "Roboto", Helvetica, sans-serif;
+  --font-size-base: 10px;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Layout */
+  --header-height: 4rem;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family-primary);
+  background: radial-gradient(
+    circle,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background-color: rgba(var(--color-primary-int), 0.2);
+  border-bottom: 0.1rem solid var(--color-black);
+}
+
+.header__content,
+.header__illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 3.5rem;
+  color: var(--white-color);
+}
+
+.header__logo {
+  width: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    flex-flow: row wrap;
+    height: 10rem;
+  }
+
+  .header__content,
+  .header__illustration {
+    height: 100%;
+    width: 50%;
+  }
+
+  .header__title {
+    letter-spacing: 0.2rem;
+    font-size: 4rem;
+  }
+
+  .header__logo {
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+  }
+}

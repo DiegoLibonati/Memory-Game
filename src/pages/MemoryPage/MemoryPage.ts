@@ -1,86 +1,17 @@
-import { Card as CardT } from "@src/entities/app";
+import type { Card as CardT } from "@/types/app";
+import type { Page } from "@/types/pages";
+import type { CardComponent } from "@/types/components";
 
-import { Card } from "@src/components/Card/Card";
+import { Card } from "@/components/Card/Card";
 
-import cards from "@src/constants/cards";
+import cards from "@/constants/cards";
 
-import { sortArray } from "@src/helpers/sortArray";
+import { sortArray } from "@/helpers/sortArray";
 
-import "@src/pages/MemoryPage/MemoryPage.css";
+import "@/pages/MemoryPage/MemoryPage.css";
 
-let timerStart: Date | null = null;
-let cardsGuessed: string[] = [];
-let cardSelected: string = "";
-let idCard: string = "";
-
-const onClickCard = (e: MouseEvent, id: string) => {
-  e.preventDefault();
-
-  const target = e.currentTarget as HTMLElement;
-  const img = target.children[0] as HTMLImageElement;
-  idCard = id;
-
-  if (!timerStart) timerStart = new Date();
-
-  if (Boolean(parseInt(img.style.opacity))) return;
-
-  img.style.opacity = "1";
-
-  game();
-};
-
-const game = () => {
-  const timer =
-    document.querySelector<HTMLHeadingElement>(".game__result-text");
-
-  if (!cardSelected) {
-    cardSelected = idCard;
-    return;
-  }
-
-  if (cardSelected !== idCard) {
-    const cardSelectedElement = document.querySelector<HTMLImageElement>(
-      `.card__img.${cardSelected}[style="opacity: 1;"]`
-    );
-
-    const cardValueElement = document.querySelector<HTMLImageElement>(
-      `.card__img.${idCard}[style="opacity: 1;"]`
-    );
-
-    setTimeout(function () {
-      cardSelectedElement!.style.opacity = "0";
-      cardValueElement!.style.opacity = "0";
-    }, 250);
-
-    cardSelected = "";
-    return;
-  }
-
-  document
-    .querySelectorAll<HTMLButtonElement>(`.${idCard}`)
-    .forEach(function (btn) {
-      const button = btn as HTMLButtonElement;
-
-      button.disabled = true;
-      button.classList.remove(`${idCard}`);
-    });
-
-  cardsGuessed.push(cardSelected);
-
-  if (cardsGuessed.length == cards.length) {
-    const end = new Date();
-    const finalTime = end.getTime() - timerStart!.getTime();
-    const inSec = Math.floor(finalTime / 1000);
-    timer!.innerHTML = `Finish the game in ${inSec} seconds. Congrats.`;
-    return;
-  }
-
-  cardSelected = "";
-  return;
-};
-
-export const MemoryPage = (): HTMLElement => {
-  const main = document.createElement("main");
+export const MemoryPage = (): Page => {
+  const main = document.createElement("main") as Page;
   main.className = "memory-page";
 
   main.innerHTML = `
@@ -109,6 +40,87 @@ export const MemoryPage = (): HTMLElement => {
 
   const newArray = cards.concat(cards);
   const sortedArray = sortArray<CardT>(newArray);
+  const cardsGuessed: string[] = [];
+
+  const createdCards: CardComponent[] = [];
+  let gameTimeout: number | null = null;
+
+  let timerStart: Date | null = null;
+  let cardSelected = "";
+  let idCard = "";
+
+  const onClickCard = (e: MouseEvent, id: string): void => {
+    e.preventDefault();
+
+    const target = e.currentTarget as HTMLElement;
+    const img = target.children[0] as HTMLImageElement;
+
+    idCard = id;
+
+    timerStart ??= new Date();
+
+    if (parseFloat(img.style.opacity || "0") > 0) return;
+
+    img.style.opacity = "1";
+
+    game();
+  };
+
+  const game = (): void => {
+    const timer = main.querySelector<HTMLHeadingElement>(".game__result-text");
+
+    if (!cardSelected) {
+      cardSelected = idCard;
+      return;
+    }
+
+    if (cardSelected !== idCard) {
+      const cardSelectedElement = main.querySelector<HTMLImageElement>(
+        `.card__img.${CSS.escape(cardSelected)}[style*="opacity: 1"]`
+      );
+
+      const cardValueElement = main.querySelector<HTMLImageElement>(
+        `.card__img.${CSS.escape(idCard)}[style*="opacity: 1"]`
+      );
+
+      if (gameTimeout !== null) {
+        clearTimeout(gameTimeout);
+        gameTimeout = null;
+      }
+
+      gameTimeout = setTimeout(() => {
+        if (cardSelectedElement) {
+          cardSelectedElement.style.opacity = "0";
+        }
+        if (cardValueElement) {
+          cardValueElement.style.opacity = "0";
+        }
+        gameTimeout = null;
+      }, 250);
+
+      cardSelected = "";
+      return;
+    }
+
+    main
+      .querySelectorAll<HTMLButtonElement>(`.${CSS.escape(idCard)}`)
+      .forEach((btn) => {
+        btn.disabled = true;
+        btn.classList.remove(idCard);
+      });
+
+    cardsGuessed.push(cardSelected);
+
+    if (cardsGuessed.length === cards.length && timer && timerStart) {
+      const end = new Date();
+      const finalTime = end.getTime() - timerStart.getTime();
+      const inSec = Math.floor(finalTime / 1000);
+      timer.innerHTML = `Finish the game in ${inSec} seconds. Congrats.`;
+      return;
+    }
+
+    cardSelected = "";
+  };
 
   sortedArray.forEach((card) => {
     const cardComponent = Card({
@@ -118,8 +130,20 @@ export const MemoryPage = (): HTMLElement => {
       onClick: onClickCard,
     });
 
-    gameCards!.append(cardComponent);
+    createdCards.push(cardComponent);
+    gameCards?.append(cardComponent);
   });
+
+  main.cleanup = (): void => {
+    if (gameTimeout !== null) {
+      clearTimeout(gameTimeout);
+      gameTimeout = null;
+    }
+
+    createdCards.forEach((card) => {
+      card.cleanup?.();
+    });
+  };
 
   return main;
 };

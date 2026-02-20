@@ -1,4 +1,4 @@
-import { Card } from "@src/entities/app";
+import type { Card } from "@/types/app";
 
 const cards: Card[] = [
   {

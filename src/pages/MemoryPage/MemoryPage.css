@@ -38,7 +38,7 @@
 
 .game__result-text {
   font-size: 2rem;
-  background-color: rgba(var(--black-color), 0.3);
+  background-color: rgba(var(--color-black-int), 0.3);
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
