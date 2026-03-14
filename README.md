@@ -76,6 +76,16 @@ For coverage report:
 npm run test:coverage
 ```
 
+## Security
+
+### npm audit
+
+Check for vulnerabilities in dependencies:
+
+```bash
+npm audit
+```
+
 ## Known Issues
 
 None at the moment.
