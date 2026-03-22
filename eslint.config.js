@@ -7,14 +7,7 @@ import globals from "globals";
 export default [
   // Archivos ignorados
   {
-    ignores: [
-      "dist/**",
-      "node_modules/**",
-      "coverage/**",
-      "*.config.js",
-      "vite.config.js",
-      "jest.config.js",
-    ],
+    ignores: ["dist/**", "node_modules/**", "coverage/**", "*.config.js"],
   },
 
   // Reglas base de JS
