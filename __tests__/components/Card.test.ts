@@ -29,7 +29,7 @@ describe("Card Component", () => {
   it("should render button with correct attributes", () => {
     renderComponent(defaultProps);
 
-    const button = screen.getByRole("button", { name: "button cat" });
+    const button = screen.getByRole("button", { name: "Card: Cat" });
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass("card", "cat");
     expect(button).toHaveAttribute("data-id", "cat");
@@ -49,7 +49,7 @@ describe("Card Component", () => {
     const user = userEvent.setup();
     renderComponent(defaultProps);
 
-    const button = screen.getByRole("button", { name: "button cat" });
+    const button = screen.getByRole("button", { name: "Card: Cat" });
     await user.click(button);
 
     expect(mockOnClick).toHaveBeenCalledTimes(1);
@@ -66,7 +66,7 @@ describe("Card Component", () => {
 
     renderComponent(dogProps);
 
-    const button = screen.getByRole("button", { name: "button dog" });
+    const button = screen.getByRole("button", { name: "Card: Dog" });
     const image = screen.getByAltText("Dog");
 
     expect(button).toHaveClass("card", "dog");
@@ -79,7 +79,7 @@ describe("Card Component", () => {
 
     card.cleanup?.();
 
-    const button = screen.getByRole("button", { name: "button cat" });
+    const button = screen.getByRole("button", { name: "Card: Cat" });
     await user.click(button);
 
     expect(mockOnClick).not.toHaveBeenCalled();

@@ -3,28 +3,28 @@
 :root {
   /* Colors */
   --color-primary: #eeaeca;
+  --color-primary-rgb: 238, 174, 202;
   --color-secondary: #94bbe9;
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-primary-int: 238, 174, 202;
-  --color-black-int: 0, 0, 0;
+  --color-black-rgb: 0, 0, 0;
 
   /* Typography */
   --font-family-primary: "Roboto", Helvetica, sans-serif;
-  --font-size-base: 10px;
-  --font-size-sm: 0.875rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
+  --font-size-base: 16px;
+  --font-size-sm: 0.546875rem;
+  --font-size-lg: 0.78125rem;
+  --font-size-xl: 0.9375rem;
 
   /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
+  --spacing-xs: 0.15625rem;
+  --spacing-sm: 0.3125rem;
+  --spacing-md: 0.625rem;
+  --spacing-lg: 0.9375rem;
+  --spacing-xl: 1.25rem;
 
   /* Layout */
-  --header-height: 4rem;
+  --header-height: 2.5rem;
 }
 
 *,
@@ -85,8 +85,8 @@ a {
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  background-color: rgba(var(--color-primary-int), 0.2);
-  border-bottom: 0.1rem solid var(--color-black);
+  background-color: rgba(var(--color-primary-rgb), 0.2);
+  border-bottom: 0.0625rem solid var(--color-black);
 }
 
 .header__content,
@@ -100,7 +100,7 @@ a {
 }
 
 .header__title {
-  font-size: 3.5rem;
+  font-size: 2.1875rem;
   color: var(--white-color);
 }
 
@@ -111,7 +111,7 @@ a {
 @media screen and (min-width: 768px) {
   .header {
     flex-flow: row wrap;
-    height: 10rem;
+    height: 6.25rem;
   }
 
   .header__content,
@@ -121,13 +121,13 @@ a {
   }
 
   .header__title {
-    letter-spacing: 0.2rem;
-    font-size: 4rem;
+    letter-spacing: 0.125rem;
+    font-size: 2.5rem;
   }
 
   .header__logo {
-    height: 10rem;
-    width: 10rem;
+    height: 6.25rem;
+    width: 6.25rem;
     object-fit: cover;
   }
 }

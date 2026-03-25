@@ -3,7 +3,7 @@
   background-image: url(https://cdn.pixabay.com/photo/2021/02/01/00/34/question-mark-5968971_640.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 19rem 10rem;
+  background-size: 11.875rem 6.25rem;
   width: 25%;
   height: 25%;
   cursor: pointer;
@@ -12,6 +12,6 @@
 .card__img {
   object-fit: contain;
   opacity: 0;
-  width: 19rem;
-  height: 10rem;
+  width: 11.875rem;
+  height: 6.25rem;
 }

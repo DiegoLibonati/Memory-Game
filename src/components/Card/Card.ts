@@ -11,7 +11,7 @@ export const Card = ({
 }: CardProps): CardComponent => {
   const button = document.createElement("button") as CardComponent;
   button.className = `card ${id}`;
-  button.setAttribute("aria-label", `button ${id}`);
+  button.setAttribute("aria-label", `Card: ${name}`);
   button.setAttribute("data-id", id);
 
   button.innerHTML = `

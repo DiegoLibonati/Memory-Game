@@ -1,7 +1,7 @@
 .game {
   width: 100%;
   height: auto;
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .game__explication {
@@ -15,12 +15,12 @@
 }
 
 .game__explication-title {
-  font-size: 4rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
 .game__description {
-  font-size: 2.5rem;
+  font-size: 1.5625rem;
   text-align: center;
 }
 
@@ -37,11 +37,11 @@
 }
 
 .game__result-text {
-  font-size: 2rem;
-  background-color: rgba(var(--color-black-int), 0.3);
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  background-color: rgba(var(--color-black-rgb), 0.3);
+  padding: 0.625rem;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
   color: var(--white-color);
   text-align: center;
 }
@@ -49,18 +49,18 @@
 @media screen and (min-width: 768px) {
   .game__explication {
     flex-flow: column wrap;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 
   .game__description {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 
   .game__wrapper-cards {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1.875rem;
   }
 
   .game__cards {
@@ -68,6 +68,6 @@
   }
 
   .game__timer {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 }
