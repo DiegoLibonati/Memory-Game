@@ -2,7 +2,7 @@ import type { Card as CardT } from "@/types/app";
 import type { Page } from "@/types/pages";
 import type { CardComponent } from "@/types/components";
 
-import { Card } from "@/components/Card/Card";
+import Card from "@/components/Card/Card";
 
 import cards from "@/constants/cards";
 
@@ -10,7 +10,7 @@ import { sortArray } from "@/helpers/sortArray";
 
 import "@/pages/MemoryPage/MemoryPage.css";
 
-export const MemoryPage = (): Page => {
+const MemoryPage = (): Page => {
   const main = document.createElement("main") as Page;
   main.className = "memory-page";
 
@@ -147,3 +147,5 @@ export const MemoryPage = (): Page => {
 
   return main;
 };
+
+export default MemoryPage;

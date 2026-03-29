@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 
 import type { Page } from "@/types/pages";
 
-import { MemoryPage } from "@/pages/MemoryPage/MemoryPage";
+import MemoryPage from "@/pages/MemoryPage/MemoryPage";
 
 const renderPage = (): Page => {
   const container = MemoryPage();

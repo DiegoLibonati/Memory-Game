@@ -3,12 +3,7 @@ import type { CardComponent } from "@/types/components";
 
 import "@/components/Card/Card.css";
 
-export const Card = ({
-  id,
-  name,
-  imgSrc,
-  onClick,
-}: CardProps): CardComponent => {
+const Card = ({ id, name, imgSrc, onClick }: CardProps): CardComponent => {
   const button = document.createElement("button") as CardComponent;
   button.className = `card ${id}`;
   button.setAttribute("aria-label", `Card: ${name}`);
@@ -30,3 +25,5 @@ export const Card = ({
 
   return button;
 };
+
+export default Card;

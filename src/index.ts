@@ -1,5 +1,5 @@
 import "@/index.css";
-import { MemoryPage } from "@/pages/MemoryPage/MemoryPage";
+import MemoryPage from "@/pages/MemoryPage/MemoryPage";
 
 const onInit = (): void => {
   const app = document.querySelector<HTMLDivElement>("#app");

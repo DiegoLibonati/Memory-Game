@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import type { CardProps } from "@/types/props";
 import type { CardComponent } from "@/types/components";
 
-import { Card } from "@/components/Card/Card";
+import Card from "@/components/Card/Card";
 
 const renderComponent = (props: CardProps): CardComponent => {
   const container = Card(props);
