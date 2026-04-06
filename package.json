@@ -32,8 +32,10 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:all": "eslint src __tests__ --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "format:all": "prettier --write \"src/**/*.{ts,css}\" \"__tests__/**/*.ts\"",
     "type-check": "tsc --noEmit",
     "prepare": "husky"
   },
