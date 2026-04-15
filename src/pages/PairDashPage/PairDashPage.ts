@@ -8,16 +8,16 @@ import cards from "@/constants/cards";
 
 import { sortArray } from "@/helpers/sortArray";
 
-import "@/pages/MemoryPage/MemoryPage.css";
+import "@/pages/PairDashPage/PairDashPage.css";
 
-const MemoryPage = (): Page => {
+const PairDashPage = (): Page => {
   const main = document.createElement("main") as Page;
-  main.className = "memory-page";
+  main.className = "pair-dash-page";
 
   main.innerHTML = `
     <section class="game">
         <div class="game__explication">
-            <h1 class="game__explication-title">Welcome to Memory GAME!</h1>
+            <h1 class="game__explication-title">Welcome to PairDash!</h1>
             <p class="game__description">
                 You mission is find the img match, and try to beat your best record
                 in seconds.
@@ -148,4 +148,4 @@ const MemoryPage = (): Page => {
   return main;
 };
 
-export default MemoryPage;
+export default PairDashPage;

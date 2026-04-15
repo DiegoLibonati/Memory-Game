@@ -1,77 +1,67 @@
 import { sortArray } from "@/helpers/sortArray";
 
 describe("sortArray", () => {
-  it("should return a new array with same length", () => {
-    const original = [1, 2, 3, 4, 5];
-    const sorted = sortArray(original);
+  describe("return value", () => {
+    it("should return a new array reference", () => {
+      const original = [1, 2, 3];
+      const result = sortArray(original);
+      expect(result).not.toBe(original);
+    });
 
-    expect(sorted).toHaveLength(original.length);
-  });
+    it("should return an array of the same length", () => {
+      const original = [1, 2, 3, 4, 5];
+      expect(sortArray(original)).toHaveLength(original.length);
+    });
 
-  it("should not modify original array", () => {
-    const original = [1, 2, 3, 4, 5];
-    const copy = [...original];
+    it("should contain all the original elements", () => {
+      const original = [1, 2, 3, 4, 5];
+      const result = sortArray(original);
+      expect(result).toEqual(expect.arrayContaining(original));
+      expect(original).toEqual(expect.arrayContaining(result));
+    });
 
-    sortArray(original);
-
-    expect(original).toEqual(copy);
-  });
-
-  it("should contain all elements from original array", () => {
-    const original = [1, 2, 3, 4, 5];
-    const sorted = sortArray(original);
-
-    original.forEach((item) => {
-      expect(sorted).toContain(item);
+    it("should not mutate the original array", () => {
+      const original = [1, 2, 3, 4, 5];
+      const copy = [...original];
+      sortArray(original);
+      expect(original).toEqual(copy);
     });
   });
 
-  it("should sort array of strings", () => {
-    const original = ["a", "b", "c", "d", "e"];
-    const sorted = sortArray(original);
+  describe("edge cases", () => {
+    it("should return an empty array when given an empty array", () => {
+      expect(sortArray([])).toEqual([]);
+    });
 
-    expect(sorted).toHaveLength(original.length);
-    original.forEach((item) => {
-      expect(sorted).toContain(item);
+    it("should return a single-element array unchanged", () => {
+      expect(sortArray([42])).toEqual([42]);
+    });
+
+    it("should work with string elements", () => {
+      const original = ["a", "b", "c", "d"];
+      const result = sortArray(original);
+      expect(result).toHaveLength(4);
+      expect(result).toEqual(expect.arrayContaining(original));
+    });
+
+    it("should work with object elements", () => {
+      const a = { id: 1 };
+      const b = { id: 2 };
+      const c = { id: 3 };
+      const original = [a, b, c];
+      const result = sortArray(original);
+      expect(result).toHaveLength(3);
+      expect(result).toContain(a);
+      expect(result).toContain(b);
+      expect(result).toContain(c);
     });
   });
 
-  it("should sort array of objects", () => {
-    const original = [
-      { id: "1", name: "First" },
-      { id: "2", name: "Second" },
-      { id: "3", name: "Third" },
-    ];
-    const sorted = sortArray(original);
-
-    expect(sorted).toHaveLength(original.length);
-    expect(sorted).toEqual(expect.arrayContaining(original));
-  });
-
-  it("should handle empty array", () => {
-    const original: number[] = [];
-    const sorted = sortArray(original);
-
-    expect(sorted).toEqual([]);
-  });
-
-  it("should handle single element array", () => {
-    const original = [1];
-    const sorted = sortArray(original);
-
-    expect(sorted).toEqual([1]);
-  });
-
-  it("should produce different order with high probability", () => {
-    const original = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const sorted1 = sortArray(original);
-    const sorted2 = sortArray(original);
-    const sorted3 = sortArray(original);
-
-    const allSame =
-      JSON.stringify(sorted1) === JSON.stringify(sorted2) &&
-      JSON.stringify(sorted2) === JSON.stringify(sorted3);
-
-    expect(allSame).toBe(false);
+  describe("shuffling", () => {
+    it("should shuffle elements based on Math.random", () => {
+      jest.spyOn(Math, "random").mockReturnValue(0);
+      const result = sortArray([1, 2, 3, 4]);
+      expect(result).toEqual([2, 3, 4, 1]);
+    });
   });
 });

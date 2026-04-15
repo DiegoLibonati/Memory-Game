@@ -1,4 +1,4 @@
-# Memory Game
+# PairDash
 
 ## Educational Purpose
 
@@ -17,7 +17,13 @@ The application will open automatically at `http://localhost:3000`
 
 ## Description
 
-I made a web page that allows you to play the memory game. You have to find the even cards, to know which ones are even you have to search among the different foods, if you find two apples you add points and you add a pair. Once you finish playing and you have found all your pairs it will calculate the time it took you to finish.
+**PairDash** is a browser-based memory card game built with vanilla TypeScript and no external runtime dependencies. The board presents 12 face-down cards arranged in a grid — 6 unique food illustrations, each duplicated to form 6 pairs. The player's goal is to uncover all matching pairs by clicking cards one at a time.
+
+When a card is clicked its image fades in, revealing its content. If the second card selected matches the first, both cards lock in place and are permanently disabled, confirming the pair. If the two cards do not match, both flip back face-down after a short 250 ms delay, giving the player a moment to memorise their positions before continuing.
+
+A built-in timer starts on the very first card click and stops the moment the last pair is found. The final elapsed time in seconds is then displayed on screen, encouraging players to replay and beat their previous record.
+
+The game runs entirely in the browser with no server, no login, and no external calls. It is a single-page application that loads instantly and works offline once the assets are cached.
 
 ## Technologies used
 
@@ -59,11 +65,7 @@ No production dependencies - Pure Vanilla TypeScript
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/Memory-Game`](https://www.diegolibonati.com.ar/#/project/Memory-Game)
-
-## Video
-
-https://github.com/DiegoLibonati/Memory-Game-Page/assets/99032604/1a61ef4a-38b7-4646-8b28-09c7a454b837
+[`https://www.diegolibonati.com.ar/#/project/pair-dash`](https://www.diegolibonati.com.ar/#/project/pair-dash)
 
 ## Testing
 

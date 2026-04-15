@@ -1,7 +1,7 @@
 {
-  "name": "Memory Game",
-  "short_name": "Memory Game",
-  "description": "I made a web page that allows you to play the memory game. You have to find the even cards, to know which ones are even you have to search among the different foods, if you find two apples you add points and you add a pair. Once you finish playing and you have found all your pairs it will calculate the time it took you to finish.",
+  "name": "PairDash",
+  "short_name": "PairDash",
+  "description": "PairDash is a browser-based memory card game built with vanilla TypeScript and no external runtime dependencies. The board presents 12 face-down cards arranged in a grid — 6 unique food illustrations, each duplicated to form 6 pairs. The player's goal is to uncover all matching pairs by clicking cards one at a time.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

@@ -1,13 +1,13 @@
 import "@/index.css";
-import MemoryPage from "@/pages/MemoryPage/MemoryPage";
+import PairDashPage from "@/pages/PairDashPage/PairDashPage";
 
 const onInit = (): void => {
   const app = document.querySelector<HTMLDivElement>("#app");
 
   if (!app) throw new Error(`You must render a container to mount the app.`);
 
-  const memoryPage = MemoryPage();
-  app.appendChild(memoryPage);
+  const pairDashPage = PairDashPage();
+  app.appendChild(pairDashPage);
 };
 
 document.addEventListener("DOMContentLoaded", onInit);

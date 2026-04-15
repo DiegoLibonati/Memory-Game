@@ -6,82 +6,99 @@ import type { CardComponent } from "@/types/components";
 
 import Card from "@/components/Card/Card";
 
-const renderComponent = (props: CardProps): CardComponent => {
-  const container = Card(props);
-  document.body.appendChild(container);
-  return container;
+const mockOnClick = jest.fn();
+
+const defaultProps: CardProps = {
+  id: "cat",
+  name: "Cat",
+  imgSrc: "/images/cat.png",
+  onClick: mockOnClick,
 };
 
-describe("Card Component", () => {
+const renderComponent = (props: Partial<CardProps> = {}): CardComponent => {
+  const element = Card({ ...defaultProps, ...props });
+  document.body.appendChild(element);
+  return element;
+};
+
+describe("Card", () => {
   afterEach(() => {
     document.body.innerHTML = "";
+    jest.clearAllMocks();
   });
 
-  const mockOnClick = jest.fn();
+  describe("rendering", () => {
+    it("should render a button element", () => {
+      renderComponent();
+      expect(screen.getByRole("button")).toBeInTheDocument();
+    });
 
-  const defaultProps: CardProps = {
-    id: "cat",
-    name: "Cat",
-    imgSrc: "/images/cat.png",
-    onClick: mockOnClick,
-  };
+    it("should have the correct className", () => {
+      renderComponent();
+      expect(screen.getByRole("button")).toHaveClass("card", "cat");
+    });
 
-  it("should render button with correct attributes", () => {
-    renderComponent(defaultProps);
+    it("should have the correct aria-label", () => {
+      renderComponent();
+      expect(
+        screen.getByRole("button", { name: "Card: Cat" })
+      ).toBeInTheDocument();
+    });
 
-    const button = screen.getByRole("button", { name: "Card: Cat" });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveClass("card", "cat");
-    expect(button).toHaveAttribute("data-id", "cat");
-    expect(button.tagName).toBe("BUTTON");
+    it("should have the correct data-id attribute", () => {
+      renderComponent();
+      expect(screen.getByRole("button")).toHaveAttribute("data-id", "cat");
+    });
+
+    it("should render an img with the correct src", () => {
+      renderComponent();
+      const img = screen
+        .getByRole("button")
+        .querySelector<HTMLImageElement>("img");
+      expect(img).toHaveAttribute("src", "/images/cat.png");
+    });
+
+    it("should render an img with the correct alt text", () => {
+      renderComponent();
+      const img = screen
+        .getByRole("button")
+        .querySelector<HTMLImageElement>("img");
+      expect(img).toHaveAttribute("alt", "Cat");
+    });
+
+    it("should render an img with the correct className", () => {
+      renderComponent();
+      const img = screen
+        .getByRole("button")
+        .querySelector<HTMLImageElement>("img");
+      expect(img).toHaveClass("card__img", "cat");
+    });
   });
 
-  it("should render image with correct attributes", () => {
-    renderComponent(defaultProps);
+  describe("behavior", () => {
+    it("should call onClick with the event and id when clicked", async () => {
+      const user = userEvent.setup();
+      renderComponent();
+      await user.click(screen.getByRole("button"));
+      expect(mockOnClick).toHaveBeenCalledTimes(1);
+      expect(mockOnClick).toHaveBeenCalledWith(expect.any(MouseEvent), "cat");
+    });
 
-    const image = screen.getByAltText("Cat");
-    expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src", "/images/cat.png");
-    expect(image).toHaveClass("card__img", "cat");
+    it("should call onClick with the correct id for different card ids", async () => {
+      const user = userEvent.setup();
+      renderComponent({ id: "dog", name: "Dog" });
+      await user.click(screen.getByRole("button"));
+      expect(mockOnClick).toHaveBeenCalledWith(expect.any(MouseEvent), "dog");
+    });
   });
 
-  it("should call onClick handler with event and id when clicked", async () => {
-    const user = userEvent.setup();
-    renderComponent(defaultProps);
-
-    const button = screen.getByRole("button", { name: "Card: Cat" });
-    await user.click(button);
-
-    expect(mockOnClick).toHaveBeenCalledTimes(1);
-    expect(mockOnClick).toHaveBeenCalledWith(expect.any(MouseEvent), "cat");
-  });
-
-  it("should render different cards", () => {
-    const dogProps: CardProps = {
-      id: "dog",
-      name: "Dog",
-      imgSrc: "/images/dog.png",
-      onClick: mockOnClick,
-    };
-
-    renderComponent(dogProps);
-
-    const button = screen.getByRole("button", { name: "Card: Dog" });
-    const image = screen.getByAltText("Dog");
-
-    expect(button).toHaveClass("card", "dog");
-    expect(image).toHaveAttribute("src", "/images/dog.png");
-  });
-
-  it("should cleanup event listener", async () => {
-    const user = userEvent.setup();
-    const card = renderComponent(defaultProps);
-
-    card.cleanup?.();
-
-    const button = screen.getByRole("button", { name: "Card: Cat" });
-    await user.click(button);
-
-    expect(mockOnClick).not.toHaveBeenCalled();
+  describe("cleanup", () => {
+    it("should remove the click event listener after cleanup is called", async () => {
+      const user = userEvent.setup();
+      const element = renderComponent();
+      element.cleanup?.();
+      await user.click(screen.getByRole("button"));
+      expect(mockOnClick).not.toHaveBeenCalled();
+    });
   });
 });
