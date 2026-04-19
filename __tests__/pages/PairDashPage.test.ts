@@ -7,6 +7,15 @@ import PairDashPage from "@/pages/PairDashPage/PairDashPage";
 
 let page: Page;
 
+jest.mock("@/constants/cards", () => {
+  const mockData = jest.requireActual("@tests/__mocks__/cards.mock");
+  const { mockCards } = mockData;
+  return {
+    __esModule: true,
+    default: mockCards,
+  };
+});
+
 const renderPage = (): Page => {
   page = PairDashPage();
   document.body.appendChild(page);
