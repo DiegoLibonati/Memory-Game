@@ -26,7 +26,7 @@ describe("PairDashPage", () => {
   afterEach(() => {
     page.cleanup?.();
     document.body.innerHTML = "";
-    jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
   describe("rendering", () => {
@@ -168,8 +168,9 @@ describe("PairDashPage", () => {
       expect(img.style.opacity).toBe("");
     });
 
-    it("should clear any pending mismatch timeout", () => {
+    it("should clear any pending mismatch timeout", async () => {
       jest.useFakeTimers();
+      const user = userEvent.setup({ delay: null });
       renderPage();
 
       const [catCard] = Array.from(
@@ -180,8 +181,8 @@ describe("PairDashPage", () => {
       );
       const catImg = catCard!.querySelector<HTMLImageElement>("img")!;
 
-      catCard!.click();
-      dogCard!.click();
+      await user.click(catCard!);
+      await user.click(dogCard!);
 
       page.cleanup?.();
       jest.runAllTimers();

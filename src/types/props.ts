@@ -1,6 +1,6 @@
 // interface DefaultProps {
-//   className?: string;
-//   children?: string;
+//   className?: string | undefined;
+//   children?: string | undefined;
 // }
 
 export interface CardProps {
