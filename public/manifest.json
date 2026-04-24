@@ -1,7 +1,7 @@
 {
-  "name": "PairDash",
-  "short_name": "PairDash",
-  "description": "PairDash is a browser-based memory card game built with vanilla TypeScript and no external runtime dependencies. The board presents 12 face-down cards arranged in a grid — 6 unique food illustrations, each duplicated to form 6 pairs. The player's goal is to uncover all matching pairs by clicking cards one at a time.",
+  "name": "Pair Dash",
+  "short_name": "Pair Dash",
+  "description": "Pair Dash is a browser-based memory card game built with vanilla TypeScript and no external runtime dependencies.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

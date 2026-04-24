@@ -17,7 +17,7 @@ const PairDashPage = (): Page => {
   main.innerHTML = `
     <section class="game">
         <div class="game__explication">
-            <h1 class="game__explication-title">Welcome to PairDash!</h1>
+            <h1 class="game__explication-title">Welcome to Pair Dash!</h1>
             <p class="game__description">
                 You mission is find the img match, and try to beat your best record
                 in seconds.

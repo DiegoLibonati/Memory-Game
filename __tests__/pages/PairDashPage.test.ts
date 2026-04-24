@@ -48,7 +48,7 @@ describe("PairDashPage", () => {
     it("should render the welcome title", () => {
       renderPage();
       expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-        "Welcome to PairDash!"
+        "Welcome to Pair Dash!"
       );
     });
 
