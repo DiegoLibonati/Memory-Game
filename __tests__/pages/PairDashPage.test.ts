@@ -42,7 +42,9 @@ describe("PairDashPage", () => {
 
     it("should render the game cards container", () => {
       renderPage();
-      expect(page.querySelector(".game__cards")).toBeInTheDocument();
+      expect(
+        page.querySelector<HTMLDivElement>(".game__cards")
+      ).toBeInTheDocument();
     });
 
     it("should render the welcome title", () => {
