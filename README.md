@@ -6,15 +6,6 @@ This project was created primarily for **educational and learning purposes**.
 While it is well-structured and could technically be used in production, it is **not intended for commercialization**.  
 The main goal is to explore and demonstrate best practices, patterns, and technologies in software development.
 
-## Getting Started
-
-1. Clone the repository
-2. Navigate to the project folder
-3. Execute: `npm install`
-4. Execute: `npm run dev`
-
-The application will open automatically at `http://localhost:3000`
-
 ## Description
 
 **Pair Dash** is a browser-based memory card game built with vanilla TypeScript and no external runtime dependencies. The board presents 12 face-down cards arranged in a grid — 6 unique food illustrations, each duplicated to form 6 pairs. The player's goal is to uncover all matching pairs by clicking cards one at a time.
@@ -27,12 +18,14 @@ The game runs entirely in the browser with no server, no login, and no external 
 
 ## Technologies used
 
-1. Typescript
+1. TypeScript
 2. CSS3
 3. HTML5
 4. Vite
 
 ## Libraries used
+
+The runtime is intentionally dependency-free — every package below is a development tool used for type-checking, testing, linting, formatting, or bundling.
 
 #### Dependencies
 
@@ -64,11 +57,20 @@ No production dependencies - Pure Vanilla TypeScript
 "vite": "^7.1.6"
 ```
 
-## Portfolio Link
+## Getting Started
 
-[`https://www.diegolibonati.com.ar/#/project/pair-dash`](https://www.diegolibonati.com.ar/#/project/pair-dash)
+With the toolchain above installed via `npm`, the project boots locally in four steps:
+
+1. Clone the repository
+2. Navigate to the project folder
+3. Execute: `npm install`
+4. Execute: `npm run dev`
+
+The application will open automatically at `http://localhost:3000`.
 
 ## Testing
+
+Once the app runs locally, the same dependency tree powers the test suite. Tests live under `__tests__/` and cover game logic, components, and helpers.
 
 1. Navigate to the project folder
 2. Execute: `npm test`
@@ -79,11 +81,9 @@ For coverage report:
 npm run test:coverage
 ```
 
-## Security
+## Security Audit
 
-### npm audit
-
-Check for vulnerabilities in dependencies:
+In addition to functional tests, dependencies should be checked for known vulnerabilities before each release.
 
 ```bash
 npm audit
@@ -92,3 +92,7 @@ npm audit
 ## Known Issues
 
 None at the moment.
+
+## Portfolio Link
+
+[`https://www.diegolibonati.com.ar/#/project/pair-dash`](https://www.diegolibonati.com.ar/#/project/pair-dash)
