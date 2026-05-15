@@ -1,9 +1,7 @@
 import DLPng from "@/assets/images/DL.png";
 
-const assets = {
+export default {
   images: {
     DLPng: DLPng,
   },
 };
-
-export default assets;

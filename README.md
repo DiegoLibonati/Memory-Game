@@ -59,6 +59,8 @@ No production dependencies - Pure Vanilla TypeScript
 
 ## Getting Started
 
+**Prerequisite:** Node.js 22 (use `.nvmrc` with `nvm use`).
+
 With the toolchain above installed via `npm`, the project boots locally in four steps:
 
 1. Clone the repository
@@ -80,6 +82,10 @@ For coverage report:
 ```bash
 npm run test:coverage
 ```
+
+## CI
+
+The repository uses GitHub Actions. On every push and pull request to `main`, the pipeline runs three jobs in sequence: **Lint & Audit** (ESLint + type-check), **Testing** (full Jest suite), and **Build** (Vite production build).
 
 ## Security Audit
 

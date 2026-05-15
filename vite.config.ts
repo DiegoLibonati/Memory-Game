@@ -1,14 +1,13 @@
 import path from "path";
 import { defineConfig } from "vite";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import type { UserConfig } from "vite";
 
 export default defineConfig({
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@tests": path.resolve(__dirname, "./__tests__"),
+      "@": path.resolve(import.meta.dirname, "./src"),
+      "@tests": path.resolve(import.meta.dirname, "./__tests__"),
     },
   },
   server: {
@@ -25,4 +24,4 @@ export default defineConfig({
     minify: "esbuild",
     target: "ES2022",
   },
-});
+}) as UserConfig;

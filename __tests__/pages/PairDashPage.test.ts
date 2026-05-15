@@ -131,6 +131,32 @@ describe("PairDashPage", () => {
         expect(catImg.style.opacity).toBe("0");
         expect(dogImg.style.opacity).toBe("0");
       });
+
+      it("should clear the pending timeout when a new mismatch pair is clicked before it fires", async () => {
+        const user = userEvent.setup({ delay: null });
+        renderPage();
+
+        const [catCard1, catCard2] = Array.from(
+          page.querySelectorAll<HTMLButtonElement>("[data-id='cat']")
+        );
+        const [dogCard] = Array.from(
+          page.querySelectorAll<HTMLButtonElement>("[data-id='dog']")
+        );
+        const [birdCard] = Array.from(
+          page.querySelectorAll<HTMLButtonElement>("[data-id='bird']")
+        );
+        const dogImg = dogCard!.querySelector<HTMLImageElement>("img")!;
+
+        await user.click(catCard1!);
+        await user.click(dogCard!);
+
+        await user.click(birdCard!);
+        await user.click(catCard2!);
+
+        jest.runAllTimers();
+
+        expect(dogImg.style.opacity).toBe("1");
+      });
     });
 
     describe("when all pairs are matched", () => {
