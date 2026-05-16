@@ -2,6 +2,12 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "orta.vscode-jest",
+    "yoavbls.pretty-ts-errors",
+    "mikestead.dotenv",
+    "ms-azuretools.vscode-containers",
+    "github.vscode-github-actions",
+    "christian-kohler.path-intellisense"
   ]
 }
